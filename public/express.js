@@ -3,7 +3,7 @@ const expressApp = (mockFilesStoragePath) => {
   const fs = require("fs");
   const app = express();
   const cors = require("cors");
-  const port = 8000;
+  const port = 80;
 
   const folderName = `mocks_folder`;
   const storage_folder = `${mockFilesStoragePath}/${folderName}`;

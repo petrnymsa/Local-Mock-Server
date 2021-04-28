@@ -1,14 +1,14 @@
+import "./HomePage.css";
+
 import React, { useEffect, useState } from "react";
-import Sheet from "../../components/Sheet";
-import Label from "../../components/Label";
+
+import AppIcon from "../../images/AppIcon.png";
 import Button from "../../components/Button";
 import ErrorBoundary from "../../components/ErrorBoundary";
-import AppIcon from "../../images/AppIcon.png";
-import deleteIcon from "../../images/delete.png";
-
+import Label from "../../components/Label";
 import ReqForm from "../ReqForm";
-
-import "./HomePage.css";
+import Sheet from "../../components/Sheet";
+import deleteIcon from "../../images/delete.png";
 
 const defaultMockData = {
   reqMethod: "",
@@ -16,6 +16,8 @@ const defaultMockData = {
   resStatus: "",
   resBody: JSON.stringify({})
 };
+
+const port = 80;
 
 const HomePage = () => {
   const [mocks, setMocks] = useState([]);
@@ -27,7 +29,7 @@ const HomePage = () => {
   });
 
   const fetchMocks = async () => {
-    let response = await fetch("http://localhost:8000/allmocks", {
+    let response = await fetch(`http://localhost:${port}/allmocks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +49,7 @@ const HomePage = () => {
       errorMessage: "",
       isLoading: true,
     });
-    const response = await fetch("http://localhost:8000/createmock", {
+    const response = await fetch(`http://localhost:${port}/createmock`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +84,7 @@ const HomePage = () => {
       errorMessage: "",
       isLoading: false,
     });
-    let response = await fetch(`http://localhost:8000/${mock.reqPath}`, {
+    let response = await fetch(`http://localhost:${port}/${mock.reqPath}`, {
       method: `${mock.reqMethod}`,
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +101,7 @@ const HomePage = () => {
 
   const onDeleteClick = async (e, { reqMethod, reqPath }) => {
     e.stopPropagation();
-    const response = await fetch("http://localhost:8000/deletemock", {
+    const response = await fetch(`http://localhost:${port}/deletemock`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

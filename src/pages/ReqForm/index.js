@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import JSONViewer from "react-json-view";
-
-import Sheet from "../../components/Sheet";
-import Label from "../../components/Label";
-import TextBox from "../../components/TextBox";
-import TextArea from "../../components/TextArea";
-import Button from "../../components/Button";
-import { isStringifiedJSON } from "../../helpers";
-import ExpandIcon from "../../images/Expand.png";
-import MinimizeIcon from "../../images/Minimize.png";
-
 import "./ReqForm.css";
+
+import React, { useEffect, useState } from "react";
+
+import Button from "../../components/Button";
+import ExpandIcon from "../../images/Expand.png";
+import JSONViewer from "react-json-view";
+import Label from "../../components/Label";
+import MinimizeIcon from "../../images/Minimize.png";
+import Sheet from "../../components/Sheet";
+import TextArea from "../../components/TextArea";
+import TextBox from "../../components/TextBox";
+import { isStringifiedJSON } from "../../helpers";
 
 const ReqForm = ({
   onsubmit,
@@ -67,8 +67,8 @@ const ReqForm = ({
           <Label fontSize={"24px"} color={"white"}>
             Request :
             <span className="sheet-inner-info">
-              (To acces mock server hit port 8000 Ex:
-              http://localhost:8000/users)
+              (To acces mock server hit port 80 Ex:
+              http://localhost:80/users)
             </span>
           </Label>
           <div className="sheet-request">
